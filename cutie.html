@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Surprise</title>
+
+<!-- 📱 Mobile friendly -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(to top,#ff9a9e,#fad0c4);
+text-align:center;
+overflow-x:hidden;
+color:white;
+}
+
+/* heading */
+h1{
+margin-top:30px;
+font-size:clamp(26px,6vw,42px);
+animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+from{ text-shadow:0 0 10px white;}
+to{ text-shadow:0 0 25px hotpink;}
+}
+
+/* balloons */
+.balloon{
+position:fixed;
+bottom:-120px;
+width:60px;
+height:80px;
+border-radius:50%;
+animation: fly 9s linear infinite;
+z-index:-1;
+}
+.balloon::after{
+content:"";
+position:absolute;
+width:2px;
+height:40px;
+background:#555;
+left:50%;
+top:80px;
+}
+@keyframes fly{
+0%{transform:translateY(0);}
+100%{transform:translateY(-130vh);}
+}
+
+/* note box */
+.note{
+max-width:90%;
+margin:30px auto;
+padding:16px;
+font-size:clamp(16px,4vw,22px);
+line-height:1.5;
+background:rgba(0,0,0,0.35);
+border-radius:20px;
+animation: fade 2s;
+}
+@keyframes fade{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1;}
+}
+
+/* photo */
+.photo{
+width:min(260px,85vw);
+border-radius:20px;
+margin:20px auto;
+box-shadow:0 0 20px hotpink;
+}
+
+/* video */
+video{
+width:90%;
+max-width:360px;
+border-radius:20px;
+margin-bottom:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<p style="font-size:14px;opacity:0.8;">Tap anywhere to start music 🎵</p>
+
+<script>
+document.addEventListener("click", () => {
+  const m = document.getElementById("bgm");
+  if(m.paused) m.play();
+},{ once:true });
+</script>
+
+<h1>🎂 Happy Birthday Taniya Chaudhary 🎂</h1>
+
+<!-- balloons -->
+<div class="balloon" style="left:10%; background:#ff4d6d;"></div>
+<div class="balloon" style="left:40%; background:#ffd166; animation-delay:2s;"></div>
+<div class="balloon" style="left:70%; background:#4cc9f0; animation-delay:4s;"></div>
+
+<!-- note -->
+<div class="note">
+Happy Birthday Cutiee Taniya 💖<br><br>
+ek small sa gift hai  
+tension na lo isme paise nahi,  
+2 din ki mehnat aur thoda sa dimag ghisa hai 😄<br><br>
+Aaj ka din tumhare liye utna hi special ho  
+jitni tum ho ✨<br><br>
+Wish you lots of happiness  
+bas naraz mat hua kar 💕  
+<br><br>
+Mahadev hamesha kripa banaye rakhe tere upar 🙏  
+tere har dukh ko khushi me badal de 🌸
+</div>
+
+<!-- photo -->
+<img src="photo.jpg" class="photo" alt="Birthday Photo">
+
+<!-- video -->
+<h2>🎥 A small surprise for you</h2>
+<video controls preload="metadata">
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support video.
+</video>
+
+<!-- 🎉 Confetti / Fireworks -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+function blast(){
+  confetti({
+    particleCount:120,
+    spread:80,
+    origin:{ y:0.6 }
+  });
+}
+blast();
+setTimeout(blast,4000);
+</script>
+
+</body>
+</html>
